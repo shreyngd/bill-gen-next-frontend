@@ -31,7 +31,7 @@ export default function InventoryForm() {
   };
 
   return (
-    <form onSubmit={submitForm} style={{ flex: 1 }}>
+    <form onSubmit={submitForm}>
       <Box display={"flex"} flexDirection="column" gap="16px">
         <HStack>
           <FormControl isRequired>

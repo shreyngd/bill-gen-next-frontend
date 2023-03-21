@@ -35,7 +35,9 @@ const Inventory = () => {
         </Box>
       </Box>
       <Box display={"flex"} w={"100%"} gap="20px">
-        <InventoryForm></InventoryForm>
+        <Box flex={1}>
+          <InventoryForm></InventoryForm>
+        </Box>
         <Box flex={1}>
           <InventoryList></InventoryList>
         </Box>
