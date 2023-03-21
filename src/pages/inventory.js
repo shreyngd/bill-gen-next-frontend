@@ -1,6 +1,11 @@
-import { PER_VALUE } from "@/utils";
+import InventoryForm from "@/components/InventoryForm";
+import InventoryList from "@/components/InventoryListView";
+import { inventoryListState } from "@/state/inventorylist";
+import { GST_SLAB, PER_VALUE } from "@/utils";
 import {
   Box,
+  Button,
+  Checkbox,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -11,8 +16,11 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useRecoilState } from "recoil";
 
 const Inventory = () => {
+  const [inventoryList, setInventoryList] = useRecoilState(inventoryListState);
+  console.log(inventoryList);
   return (
     <VStack w="100%" h="100%" p="32px 36px" spacing="40px">
       <Box w="100%">
@@ -26,48 +34,11 @@ const Inventory = () => {
           </Text>
         </Box>
       </Box>
-      <Box display={"flex"} w={"100%"}>
-        <form onSubmit={console.log} style={{ flex: 1 }}>
-          <Box display={"flex"} flexDirection="column" gap="16px">
-            <HStack>
-              <FormControl isRequired>
-                <FormLabel>Item Name</FormLabel>
-                <Input type="text" placeholder="Item Name" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Item Description</FormLabel>
-                <Input type="text" placeholder="Item description" />
-              </FormControl>
-            </HStack>
-            <HStack>
-              <FormControl>
-                <FormLabel>HSN/ASC Number</FormLabel>
-                <Input type="text" placeholder="" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Per</FormLabel>
-                <Select placeholder="Select option">
-                  {PER_VALUE.map((opt) => (
-                    <option value={opt} key={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </Select>
-              </FormControl>
-            </HStack>
-            <HStack>
-              <FormControl>
-                <FormLabel>Item Name</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Item Description</FormLabel>
-                <Input type="text" />
-              </FormControl>
-            </HStack>
-          </Box>
-        </form>
-        <Box flex={1}></Box>
+      <Box display={"flex"} w={"100%"} gap="20px">
+        <InventoryForm></InventoryForm>
+        <Box flex={1}>
+          <InventoryList></InventoryList>
+        </Box>
       </Box>
     </VStack>
   );
